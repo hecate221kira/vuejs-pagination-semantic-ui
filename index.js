@@ -1,6 +1,6 @@
 export default {
     template: `<div class="ui pagination menu">
-      <a v-if="showPrevious() || currentPage <= 1" :class="{ 'disabled' : currentPage <= 1 }" class="item">
+      <a v-if="currentPage <= 1" :class="{ 'disabled' : currentPage <= 1 }" class="item">
         {{ config.previousText }}
       </a>
       <a v-if="currentPage > 1" @click.prevent="changePage(currentPage - 1)" class="item">
@@ -9,7 +9,7 @@ export default {
       <a v-for="num in array" :class="{ 'active': num === currentPage }" class="item" @click.prevent="changePage(num)">
         {{ num }}
       </a>
-      <a v-if="showNext() || currentPage === lastPage || lastPage === 0" :class="{ 'disabled' : currentPage === lastPage || lastPage === 0 }" class="item">
+      <a v-if="currentPage === lastPage || lastPage === 0" :class="{ 'disabled' : currentPage === lastPage || lastPage === 0 }" class="item">
         {{ config.nextText }}
       </a>
       <a v-if="currentPage < lastPage" @click.prevent="changePage(currentPage + 1)" class="item">
